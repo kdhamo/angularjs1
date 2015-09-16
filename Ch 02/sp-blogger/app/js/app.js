@@ -1,5 +1,16 @@
 'use strict'
 
-angular.module('spBlogger',['spBlogger.posts','spBlogger.controllers','spBlogger.directives','spBlogger.filters','spBlogger.services']);
+var blogApp = angular.module('spBlogger', [
+	'spBlogger.posts',
+	'spBlogger.controllers',
+	'spBlogger.directives',
+	'spBlogger.filters',
+	'spBlogger.services',
+	'ui.router'
+	]);
 
-angular.module('spBlogger').value('version','V1.0');
+blogApp.value('version','V1.0');
+
+blogApp.run(['$state', function($state) {
+	$state.go('allPosts');
+}]);
